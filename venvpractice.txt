@@ -1,0 +1,4 @@
+-There was more stuff for me. But I had installed a few things with pip while practicing. 
+-The requirement was already fulfilled.
+-Freeze shows all packages added and their versions. List is all packages including the standard ones.
+-Not found when show for Django.  
