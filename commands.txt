@@ -1,0 +1,6 @@
+git init
+git add .
+git commit -m "first comment"
+git remote add origin remote https://github.com/jarthurj/Python.git
+git push -u origin master
+

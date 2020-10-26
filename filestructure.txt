@@ -1,0 +1,9 @@
+C:.
+├───django
+│   ├───django_fullstack
+│   ├───django_fundamentals
+│   └───django_orm
+├───my_environments
+└───_python
+    ├───OOP
+    └───python_fundamentals
