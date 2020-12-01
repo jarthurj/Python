@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Survey</title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id='label_block' class="top_block">
+				<h3>Your Name:</h3>
+				<h3>Location:</h3>
+				<h3>Favorite Lanuage:</h3>
+			</div>
+			<div id='formsblock' class="top_block">
+				
+				<form action="result/" method='post'>
+					{% csrf_token %}
+					<input type="text" name="your_name" class="input">
+					<select name='location' class="input">
+						<option value="DC">DC</option>
+						<option value="SiliconValley">Silicon Valley</option>
+						<option value="Boise">Boise</option>
+						<option value="Chicago">Chicago</option>
+						<option value="Arlington">Arlington</option>
+					</select>
+					<select name='language' class="input">
+						<option value="Python">Python</option>
+						<option value="Java">Java</option>
+						<option value="C++">C++</option>
+						<option value="JavaScript">Javascript</option>
+						<option value="Ruby">Ruby</option>
+					</select>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+			<div id='commentblock'>
+			</div>
+		</div>
+	</body>
+</html>
