@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<div id='wrapper'>
+		<h3> Random Word attempt {{request.session.attempts}}</h3>
+		<h1>{{random}}</h1>
+		<form action="get_word/" method='GET'>
+			<button type="submit"> Generate</button>
+		</form>
+		<form action="/reset/" method='GET'>
+			<button type="submit">Reset</button>
+		</form>
+	</div>
+</body>
+</html>
