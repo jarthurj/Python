@@ -1,0 +1,38 @@
+#wrapper{
+	width:1000px;
+	height:1000px;
+	margin:auto;
+}
+
+
+#locations{
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+
+}
+
+.location{
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	width:20%;
+	padding:10px;
+	height:180px;
+}
+#wrapper{
+	padding:20px;
+}
+
+
+.gold_amount{
+	margin:20px 0 70px 0;
+}
+h1{
+	margin:0 0 20px 0;
+}
+
+#log{
+	width:100%;
+	height: 100px;
+}

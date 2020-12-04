@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<div id="wrapper">
+		<h2> Your Gold: {{request.session.gold}}</h2>
+		<div id="locations">
+			<div class="location">
+				<h1>Farm</h1>
+				<h2 class="gold_amount">(earns 10-20 gold)</h2>
+				<form action="/get_gold_farm/" method='GET'>
+					<button type="submit">Find Gold!</button>
+				</form>
+			</div>
+			<div class="location">
+				<h1>Cave</h1>
+				<h2 class="gold_amount">(earns 5-10 gold)</h2>
+				<form action="/get_gold_cave/" method='GET'>
+					<button type="submit">Find Gold!</button>
+				</form>
+			</div>
+			<div class="location">
+				<h1>House</h1>
+				<h2 class="gold_amount">(earns 2-5 gold)</h2>
+				<form action="/get_gold_house/" method='GET'>
+					<button type="submit">Find Gold!</button>
+				</form>
+			</div>
+			<div class="location">
+				<h1>Casino</h1>
+				<h2 class="gold_amount">(earns/takes 0-50 gold)</h2>
+				<form action="/get_gold_casino/" method='GET'>
+					<button type="submit">Find Gold!</button>
+				</form>
+			</div>
+		</div>
+		<div id="activites">
+			<h2>Acitivities</h2>
+			<textarea readonly id="log">
+				{{request.session.log}}
+			</textarea>
+		</div>
+	</div>
+
+</body>
+</html>
