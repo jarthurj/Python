@@ -7,5 +7,4 @@ urlpatterns =[
 	path('get_gold_cave/', views.get_gold_cave),
 	path('get_gold_house/', views.get_gold_house),
 	path('get_gold_casino/', views.get_gold_casino),
-
 ]
