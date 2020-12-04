@@ -13,36 +13,43 @@
 			<div class="location">
 				<h1>Farm</h1>
 				<h2 class="gold_amount">(earns 10-20 gold)</h2>
-				<form action="/get_gold_farm/" method='GET'>
+				<form action="process_gold" method='POST'>
+					{% csrf_token %}
+					<input type="hidden" name="building" value="farm">
 					<button type="submit">Find Gold!</button>
 				</form>
 			</div>
 			<div class="location">
 				<h1>Cave</h1>
 				<h2 class="gold_amount">(earns 5-10 gold)</h2>
-				<form action="/get_gold_cave/" method='GET'>
+				<form action="process_gold" method='POST'>
+					{% csrf_token %}
+					<input type="hidden" name="building" value="cave">
 					<button type="submit">Find Gold!</button>
 				</form>
 			</div>
 			<div class="location">
 				<h1>House</h1>
 				<h2 class="gold_amount">(earns 2-5 gold)</h2>
-				<form action="/get_gold_house/" method='GET'>
+				<form action="process_gold" method='POST'>
+					{% csrf_token %}
+					<input type="hidden" name="building" value="house">
 					<button type="submit">Find Gold!</button>
 				</form>
 			</div>
 			<div class="location">
 				<h1>Casino</h1>
 				<h2 class="gold_amount">(earns/takes 0-50 gold)</h2>
-				<form action="/get_gold_casino/" method='GET'>
+				<form action="process_gold" method='POST'>
+					{% csrf_token %}
+					<input type="hidden" name="building" value="casino">
 					<button type="submit">Find Gold!</button>
 				</form>
 			</div>
 		</div>
 		<div id="activites">
 			<h2>Acitivities</h2>
-			<textarea readonly id="log">
-				{{request.session.log}}
+			<textarea readonly id="log">{{request.session.log}}
 			</textarea>
 		</div>
 	</div>
