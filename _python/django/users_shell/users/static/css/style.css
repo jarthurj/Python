@@ -1,0 +1,37 @@
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+#data_table{
+	width:80%;
+	margin:auto;
+}
+#wrapper{
+	width:80%;
+	margin:auto;
+}
+#input_space{
+	width:60%;
+	margin:auto;
+
+}
+h1{
+	text-align: center;
+}
+p{
+	display: inline-block;
+}
+button{
+	display: block;
+	margin:auto;
+}
+#age{
+	display: inline;
+}
