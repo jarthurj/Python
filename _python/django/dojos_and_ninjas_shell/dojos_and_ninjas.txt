@@ -1,0 +1,67 @@
+python manage.py makemigrations
+
+pyhton manage.py migrate
+
+winpty python manage.py shell
+
+from dojos_and_ninjas.models import Ninja, Dojo
+
+Dojo.objects.create(name='Coding Dojo Bellevue', city='Bellevue', state='WA')
+
+Dojo.objects.create(name='Coding Dojo Arlington', city='Arlington', state='VA')
+
+Dojo.objects.create(name='Coding Dojo Dallas', city='Dallas', state='TX')
+
+for x in range(1, len(Dojo.objects.all()) + 1):
+	d = Dojo.object.get(id=x)
+	d.delete()
+
+Dojo.objects.create(name='Coding Dojo Bellevue', city='Bellevue', state='WA')
+
+Dojo.objects.create(name='Coding Dojo Arlington', city='Arlington', state='VA')
+
+Dojo.objects.create(name='Coding Dojo Dallas', city='Dallas', state='TX')
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=4), first_name="John", last_na
+me="oldaker")
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=4), first_name="Beavis", last_
+name="Ass")
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=4), first_name="Captian", last
+_name="Falcon")
+
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=5), first_name="Solid", last_n
+ame="Snake")
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=5), first_name="Happy", last_n
+ame="Gilmore")
+
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=5), first_name="Billy", last_n
+ame="Madison")
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=6), first_name="Sonny", last_n
+ame="Cofax")
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=6), first_name="Adam", last_na
+me="Sandler")
+
+Ninja.objects.create(dojo=Dojo.objects.get(id=6), first_name="Lenny", last_n
+ame="Fedder")
+
+Dojo.objects.first().ninjas.all()
+
+Dojo.objects.last().ninjas.all()
+
+Ninja.objects.last().dojo
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+from dojos_and_ninjas.models import Ninja, Dojo
+
+Dojo.objects.create(name="Codoing Dojo Orange County", city="Orange County",
+ state="CA", desc="This is the coding dojo campus in orange county california")
