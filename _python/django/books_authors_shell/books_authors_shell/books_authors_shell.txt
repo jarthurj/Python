@@ -1,0 +1,108 @@
+python manage.py makemigrations
+
+python manage.py migrate
+
+winpty python manage.py shell
+
+
+>>> from books_authors_app.models import Book, Author
+>>> Book.objects.create(title="C Sharp", desc="A book on the programming language c sharp")
+
+>>> Book.objects.create(title="Java", desc="A book on the programming language java")
+
+>>> Book.objects.create(title="Python", desc="A book on the programming language python")
+
+>>> Book.objects.create(title="PHP", desc="A book on the programming language PHP")
+
+>>> Book.objects.create(title="Ruby", desc="A book on the programming language Ruby")
+
+>>> Author.objects.create(first_name="Jane", last_name="Austen")
+
+>>> Author.objects.create(first_name="Emily", last_name="Dickenson")
+
+>>> Author.objects.create(first_name="Fydor", last_name="Dostoevsky")
+
+>>> Author.objects.create(first_name="William", last_name="Shakespeare")
+
+>>> Author.objects.create(first_name="Lau", last_name="Tzu")
+
+exit()
+
+python manage.py makemigrations
+
+1
+
+"Notes of the author"
+
+python manage.py migrate
+
+>>> from books_authors_app.models import Book,Author
+>>> cbook = Book.objects.filter(title="C Sharp")
+>>> cbook.title = "C#"
+>>> cbook.title
+'C#'
+>>> cbook.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'save'
+>>> cbook = Book.objects.get(id=1)
+>>> cbook.title
+'C Sharp'
+>>> cbook.title = 'C#'
+>>> cbook.save
+<bound method Model.save of <Book: Book object (1)>>
+>>> bill = Author.objects.get(id=40
+...
+...
+... d
+  File "<console>", line 4
+    d
+    ^
+SyntaxError: invalid syntax
+>>> bill = Author.objects.get(id=4)
+>>> bill.first_name = "Bill"
+>>> bill.save()
+>>>
+>>> bill.first_name
+'Bill'
+>>> first = Author.objects.first()
+>>> first.books.add(Book.object.first())
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Book' has no attribute 'object'
+>>> first.books.add(Book.objects.first())
+>>> first.books.add(Book.objects.get(id=2))
+>>> first.books
+<django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.Man
+yRelatedManager object at 0x042CD3B8>
+>>> sec = Author.objects.get(id=2)
+>>> sec.add(Book.objects.get(id=1))
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Author' object has no attribute 'add'
+>>> sec.books.add(Book.objects.get(id=1))
+>>> sec.books.add(Book.objects.get(id=2))
+>>> sec.books.add(Book.objects.get(id=3))
+>>> third = Author.objects.get(id=3)
+>>> third.books.add(Book.objects.get(id=1))
+>>> third.books.add(Book.objects.get(id=2))
+>>> third.books.add(Book.objects.get(id=3))
+>>> third.books.add(Book.objects.get(id=4))
+
+
+>>> for book in Book.objects.all():
+...     fourth.books.add(book)
+
+>>> book3 = Book.objects.get(id=3)
+>>> book3.authors
+
+ book3.authors.all()
+
+book3.authors.first().delete
+
+>>> sec = Book.objects.get(id=2)
+>>> sec.authors.add(Author.objects.last())
+auth3 = Author.objects.get(id=3)
+auth3.books.all()
+book5 = Book.objects.get(id=5)
+book5.authros.all()
