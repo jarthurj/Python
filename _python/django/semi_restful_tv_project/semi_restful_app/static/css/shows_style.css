@@ -1,0 +1,19 @@
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+#show_table{
+	width:100%;
+	margin:auto;
+}
+#wrapper{
+	width:80%;
+	margin:auto;
+}

@@ -1,0 +1,42 @@
+<!-- 
+This is the main page that shows the table. 
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/shows_style.css' %}">
+</head>
+<body>
+	
+	<div id="wrapper">
+		<h1>All Shows</h1>
+		<table id="show_table">
+			<tr>
+				<th>id</th>
+				<th>Title</th>
+				<th>Network</th>
+				<th>Release Date</th>
+				<th>Actions</th>
+			</tr>
+			{% for show in shows %}
+			<tr>
+				<td>{{show.id}}</td>
+				<td>{{show.title}}</td>
+				<td>{{show.network}}</td>
+				<td>{{show.release_date}}</td>
+				<td>
+					<a href="shows/{{show.id}}">Show |</a>
+					<a href="shows/{{show.id}}/edit"> Edit |</a>
+					<a href="shows/{{show.id}}/destroy"> Delete</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<a href="shows/new">Add A New Show</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- This is the template for 
+shownig the information for just one show
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1> TV Show</h1>
+	<p>Title:'{{show.title}}'</p>
+	<p>Network:{{show.network}}</p>
+	<p>Release Date:{{show.release_date}}</p>
+	<p>Descrition:{{show.description}}</p>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<p>Last Update:{{show.updated_at}}</p>
+	<a href="{{show.id}}/edit">Edit</a>
+	<a href="{{show.id}}/destroy">Delete</a>
+	<a href="/">Go back</a>
+</body>
+</html>
