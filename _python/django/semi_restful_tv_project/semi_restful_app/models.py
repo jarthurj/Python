@@ -11,12 +11,19 @@ class ShowManager(models.Manager):
 			errors['title'] = "Show title should be at leaset 2 character"
 		if len(postData['network']) < 3:
 			errors['network'] = "Network should be longer thatn 3 characters"
-		if len(postData['description']) < 10:
-			errors['description'] = "Description should be longer than 10 characeters"
+		if len(postData['description']) < 10 and len(postData['description']) > 1:
+			errors['description'] = "If a description is given it must be longer than 10 characters"
 		if release_date > date.today():
 			errors['release_date'] = "Release date should be in the past"	
+
 		return errors
 
+	def basic_and_edits(self, postData):
+		errors = self.basic_validator(postData)
+		for show in Show.objects.all():
+			if show.title ==postData['title']:
+				errors['title not unqiue'] = "Show already in database"
+		return errors
 class Show(models.Model):
 	title = models.CharField(max_length=255)
 	network = models.CharField(max_length=255)

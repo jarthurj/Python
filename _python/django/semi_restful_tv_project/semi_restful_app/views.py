@@ -27,7 +27,7 @@ def new_show(request):
 
 def add_show(request):
 	errors = None
-	errors = Show.objects.basic_validator(request.POST)
+	errors = Show.objects.basic_and_edits(request.POST)
 	
 	if len(errors) > 0:
 		for key, value in errors.items():
@@ -62,8 +62,8 @@ def make_updates(request):
 	show_id = request.POST['id']
 	if len(errors) > 0:
 		for key, value in errors.items():
-			message.error(request, value)
-		error_url = f'shows/{show_id}/edit'
+			messages.error(request, value)
+		error_url = f'/shows/{show_id}/edit'
 		return redirect(error_url)
 	else:
 		show_to_update = Show.objects.get(id=request.POST['id'])
