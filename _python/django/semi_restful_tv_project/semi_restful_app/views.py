@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Show
+from django.contrib import messages
+
 def index(request):
 	return redirect('/shows')
 
@@ -24,12 +26,20 @@ def new_show(request):
 	return render(request, 'new_show.html')
 
 def add_show(request):
-	title = request.POST['title']
-	network = request.POST['network']
-	release_date = request.POST['release_date']
-	description = request.POST['description']
-	Show.objects.create(title=title, network=network, release_date=release_date, description=description)
-	show_url = f"/shows/{Show.objects.last().id}"
+	errors = None
+	errors = Show.objects.basic_validator(request.POST)
+	
+	if len(errors) > 0:
+		for key, value in errors.items():
+			messages.error(request, value)
+		return redirect('/shows/new')
+	else:
+		title = request.POST['title']
+		network = request.POST['network']
+		release_date = request.POST['release_date']
+		description = request.POST['description']
+		Show.objects.create(title=title, network=network, release_date=release_date, description=description)
+		show_url = f"/shows/{Show.objects.last().id}"
 	return redirect(show_url)
 
 def edit_show(request, show_id):
@@ -48,16 +58,25 @@ def edit_show(request, show_id):
 	return render(request, 'edit.html', context)
 
 def make_updates(request):
-	show_to_update = Show.objects.get(id=request.POST['id'])
-	if (request.POST['title'] != show_to_update.title or 
-		request.POST['network'] != show_to_update.network or
-		request.POST['release_date'] != show_to_update.release_date or
-		request.POST['description'] != show_to_update.description):
-		show_to_update.title = request.POST['title']
-		show_to_update.network = request.POST['network']
-		show_to_update.release_date = request.POST['release_date']
-		show_to_update.description = request.POST['description']
-		show_to_update.save()
+	errors = Show.objects.basic_validator(request.POST)
+	show_id = request.POST['id']
+	if len(errors) > 0:
+		for key, value in errors.items():
+			message.error(request, value)
+		error_url = f'shows/{show_id}/edit'
+		return redirect(error_url)
+	else:
+		show_to_update = Show.objects.get(id=request.POST['id'])
+		if (request.POST['title'] != show_to_update.title or 
+			request.POST['network'] != show_to_update.network or
+			request.POST['release_date'] != show_to_update.release_date or
+			request.POST['description'] != show_to_update.description):
+			show_to_update.title = request.POST['title']
+			show_to_update.network = request.POST['network']
+			show_to_update.release_date = request.POST['release_date']
+			show_to_update.description = request.POST['description']
+			show_to_update.save()
+			messages.success(request, "Show updated sucessfully")
 	show_url = f"/shows/{show_to_update.id}"
 	return redirect(show_url)
 

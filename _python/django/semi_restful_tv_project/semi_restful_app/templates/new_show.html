@@ -9,6 +9,13 @@
 <body>
 	
 	<div id="wrapper">
+		{% if messages %}
+		<ul class="messages">    
+		    {% for message in messages %}    
+		        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		    {% endfor %}
+		</ul>
+		{% endif %}
 		<h1>Add A New Show</h1>
 		<form action="/add_show/" method="POST">
 			{% csrf_token %}

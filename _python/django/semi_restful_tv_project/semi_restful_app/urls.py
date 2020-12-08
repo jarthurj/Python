@@ -10,3 +10,4 @@ urlpatterns = [
 	path('edit_show/', views.make_updates),
 	path('shows/<int:show_id>/destroy', views.delete),
 ]
+
