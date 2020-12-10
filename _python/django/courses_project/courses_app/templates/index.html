@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{%static 'css/reset.css'%}">
+	<link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+</head>
+<body>
+	<div id='wrapper'>
+		<div id='input'>
+			<h1> Add a new course</h1>
+			<div id="form_titles">
+				<p>Name: </p>
+				<p>Description: </p>
+			</div>
+			{% if messages %}
+			<ul class="messages">    
+			    {% for message in messages %}    
+			        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			    {% endfor %}
+			</ul>
+			{% endif %}
+			<div id="forms">
+				<form action="add_course" method="POST">
+					{% csrf_token %}
+					<input type="text" name="course_name" class="form">
+					<textarea name="description" class="form"></textarea>
+					<button type="submit">Add</button>
+				</form>
+			</div>
+		</div>
+			<table id="course_table">
+				<tr >
+					<th>Course</th>
+					<th>Description</th>
+					<th>Created At</th>
+					<th>Actions</th>
+				</tr>
+				{% for course in courses %}
+				<tr>
+					<td>{{course.course_name}}</td>
+					<td>{{course.description}}</td>
+					<td>{{course.created_at}}</td>
+					<td><a href="/delete/{{course.id}}">remove</a>|<a href="/comments/{{course.id}}">comment</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{%static 'css/reset.css'%}">
+		<link rel="stylesheet" type="text/css" href="{%static 'css/style.css'%}">
+	</head>
+	<body>
+		<div id="wrapper">
+			<h1>Write a comment about the course</h1>	
+			<form action="/add_comment/{{course_id}}" method="POST">
+				{% csrf_token %}
+				<textarea name="comment" class="form"></textarea>
+				<button type="submit">Add Comment</button>
+			</form>
+			<table id="comment_table">
+			<tr >
+				<th>Comments</th>
+			</tr>
+			{% for comment in comments %}
+			<tr>
+				<td>{{comment}}</td>
+			</tr>
+			{% endfor %}
+			</table>
+		</div>
+		<a href="/">Go Back</a>
+	</body>
+</html>

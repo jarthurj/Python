@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{%static 'css/reset.css'%}">
+	<link rel="stylesheet" type="text/css" href="{%static 'css/delete.css'%}">
+</head>
+<body>
+	<div id="wrapper">
+		<h1>Are you sure you want to delete the following course?</h1>
+		<p>Name:</p>
+		<p class = "variable">{{course.course_name}}</p>
+		<p>Description:</p>
+		<p class = "variable">{{course.description}}</p>
+		<form action="/delete/{{course.id}}" method="POST">
+			{% csrf_token %}
+			<button type="submit">Yes! Delete.</button>
+		</form>
+		<form action="/" method="GET">
+			<button type="submit">No</button>
+		</form>
+	</div>
+</body>
+</html>

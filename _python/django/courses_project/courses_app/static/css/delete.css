@@ -1,0 +1,16 @@
+#wrapper{
+	width: 80%;
+	margin:auto;
+}
+.variable{
+	width:50%;
+	display: inline-block;
+}
+p{
+	width:30%;
+	display: inline-block;
+}
+form:{
+	display: inline;
+	width:50%;
+}
